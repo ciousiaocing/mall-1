@@ -19,7 +19,7 @@ RSpec.describe Cart, type: :model do
       # @cart.add_item(1)
       cart.add_item(1)
       expect(cart.empty?).to be false
-      # expect(cart).not_to be_empty?
+      expect(cart).not_to be_empty
 
       # expect(user.adult?).to be true
       # expect(user).to be_adult
