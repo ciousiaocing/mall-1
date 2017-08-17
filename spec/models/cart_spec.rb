@@ -16,7 +16,7 @@ RSpec.describe Cart, type: :model do
 
       # cart = Cart.new
       # cart.add_item(1)
-      # @cart.add_item(1)
+      # @cart.add_item(1) => before(:each)
       cart.add_item(1)
       expect(cart.empty?).to be false
       expect(cart).not_to be_empty

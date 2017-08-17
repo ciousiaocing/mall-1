@@ -5,9 +5,9 @@ FactoryGirl.define do
     description "MyText"
     price "9.99"
 
-    # trait :cheap do
-    #   price "1"
-    # end
+    trait :cheap do
+      price 1
+    end
   end
 end
 

@@ -5,8 +5,13 @@ RSpec.describe CartItem, type: :model do
 
     # p1 = Product.create(title: "Ruby", price: 10)
     # p2 = Product.create(title: "PHP", price: 100)
-    p1 = FactoryGirl.create(:product, price: 10)
-    p2 = FactoryGirl.create(:product, price: 100)
+    # p1 = FactoryGirl.create(:product, price: 10)
+    # p2 = FactoryGirl.create(:product, price: 100)
+    # p3 = FactoryGirl.create(:product, :cheap)  #=> price: 1
+
+    # 將 config.include FactoryGirl::Syntax::Methods 放在 spec/rails_helper.rb
+    p1 = create(:product, price: 10)
+    p2 = create(:product, price: 100)
 
     cart = Cart.new
     3.times { cart.add_item(p1.id) }
