@@ -1,3 +1,11 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :products
+
+  # resources :cart, only: [:index, :destroy]
+
+  resource :cart, only: [:show, :destroy] do
+    post :add, path: "add/:id"
+    # post :a2, path: ":id/add"
+    # post :a3
+  end
 end
