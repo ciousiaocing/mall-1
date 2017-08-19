@@ -66,8 +66,60 @@ RSpec.describe Cart, type: :model do
 
   describe "購物車進階功能" do
     #* 因為購物車將以 Session 方式儲存，所以：
-      #* 可以將購物車內容轉換成 Hash
-      #* 也可以把 Hash 還原成購物車的內容
+    it "可以將購物車內容轉換成 Hash" do
+      hash = {
+        "items" => [
+          {"product_id" => 2, "quantity" => 3},
+          {"product_id" => 4, "quantity" => 5}
+        ]
+      }
+
+      # cart.add_item(2)
+      # cart.add_item(2)
+      # cart.add_item(2)
+      3.times { cart.add_item(2) }
+      5.times { cart.add_item(4) }
+
+      # cart.to_hash
+      # p cart
+      # p cart.items
+      # p hash
+
+      # expect(cart.serialize).to eq hash
+      expect(cart.serialize).to eq cart_hash
+
+
+    end
+
+    it "也可以把 Hash 還原成購物車的內容" do
+      hash = {
+        "items" => [
+          {"product_id" => 2, "quantity" => 3},
+          {"product_id" => 4, "quantity" => 5}
+        ]
+      }
+
+      # 嘗試
+      # cart = Cart.new
+      # cart.from_hash(cart_hash)
+
+      cart = Cart.from_hash(cart_hash) #類別方法
+      expect(cart.items.count).to be 2
+      expect(cart.items.first.quantity).to be 3
+      expect(cart.items.last.product_id).to be 4
+
+    end
+  end
+
+  private
+  #整理code
+  def cart_hash
+    {
+      "items" => [
+        {"product_id" => 2, "quantity" => 3},
+        {"product_id" => 4, "quantity" => 5}
+      ]
+    }
   end
 
   # pending "add some examples to (or delete) #{__FILE__}"
