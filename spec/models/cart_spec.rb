@@ -62,6 +62,7 @@ RSpec.describe Cart, type: :model do
       expect(cart.total_price).to eq 550
 
     end
+
   end
 
   describe "購物車進階功能" do
